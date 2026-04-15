@@ -51,7 +51,7 @@ public class TradingSignalController {
         return TradingSignalResponse.from(service.getById(id));
     }
 
-    @DeleteMapping("/{Id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id) {
         service.delete(id);
     }
