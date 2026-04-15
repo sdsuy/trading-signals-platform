@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.example.trading.signal.exception.ResourceNotFoundException;
 import com.example.trading.signal.model.SignalAction;
 import com.example.trading.signal.model.TradingSignal;
 import com.example.trading.signal.repository.TradingSignalRepository;
@@ -29,7 +30,7 @@ public class TradingSignalService {
 
     public TradingSignal getById(UUID id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Signal not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Signal not found: " + id));
     }
 
     public void delete(UUID id) {
