@@ -16,6 +16,8 @@ import com.example.trading.signal.controller.dto.TradingSignalResponse;
 import com.example.trading.signal.model.TradingSignal;
 import com.example.trading.signal.service.TradingSignalService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/signals")
 public class TradingSignalController {
@@ -27,7 +29,7 @@ public class TradingSignalController {
     }
 
     @PostMapping
-    public TradingSignalResponse create(@RequestBody CreateSignalRequest request) {
+    public TradingSignalResponse create(@Valid @RequestBody CreateSignalRequest request) {
         TradingSignal signal = service.create(
                 request.symbol,
                 request.action,
